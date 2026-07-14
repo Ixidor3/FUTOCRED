@@ -12,9 +12,9 @@ export async function getSignedContract() {
     return new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
 }
 
-// Keep these for pages that still call them directly
+// Kept for backward compatibility
 export async function connectWallet() {
-    if (!window.ethereum) throw new Error("MetaMask not found. Please install it.");
+    if (!window.ethereum) throw new Error("No wallet found");
     const provider = new BrowserProvider(window.ethereum);
     const accounts = await provider.send("eth_requestAccounts", []);
     return accounts[0];
