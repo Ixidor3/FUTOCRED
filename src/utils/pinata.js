@@ -27,5 +27,6 @@ export async function uploadPDFToPinata(file) {
 
 // Build a gateway URL from a CID so verifiers can view/download the PDF
 export function getIPFSUrl(cid) {
-    return `${GATEWAY}/ipfs/${cid}`;
+    const gateway = import.meta.env.VITE_PINATA_GATEWAY || "https://gateway.pinata.cloud";
+    return `${gateway}/ipfs/${cid}`;
 }
